@@ -43,8 +43,8 @@ api.get('/books/:id', async (req, res) => {
 
     if (book) {
         try {
-            const authorResponse = await axios.get(`http://localhost:4001/authors/${book.authorId}`);
-            const categoryResponse = await axios.get(`http://localhost:5001/categories/${book.categoryId}`);
+            const authorResponse = await axios.get(`http://authors:4001/authors/${book.authorId}`);
+            const categoryResponse = await axios.get(`http://categories:5001/categories/${book.categoryId}`);
             const author = authorResponse.data;
             const category = categoryResponse.data;
 

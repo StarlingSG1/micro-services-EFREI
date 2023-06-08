@@ -1,0 +1,30 @@
+services:
+  books:
+    build: ./books
+    ports:
+      - "3001:3001"
+    expose:
+      - "3001"
+    networks:
+      - my-network
+    command: npm run start
+  authors:
+    build: ./authors
+    ports:
+      - "4001:4001"
+    expose:
+      - "4001"
+    networks:
+      - my-network
+    command: npm run start
+  categories:
+    build: ./categories
+    ports:
+      - "5001:5001"
+    expose:
+      - "5001"
+    networks:
+      - my-network
+    command: npm run start
+networks:
+  my-network:
