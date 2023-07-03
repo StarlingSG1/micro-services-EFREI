@@ -68,11 +68,11 @@ api.post('/books', (req, res) => {
     res.json(book);
 });
 
-api.get('/book/eventBook/:id', async (req, res) => {
-    const eventBook = () => {
+api.get('/book/trigger/:id', async (req, res) => {
+    const trigger = () => {
 
         let returnElement = null;
-        bookList.forEach((element) => {
+        books.forEach((element) => {
             if (element.author_id == id) {
                 element.author_id = null;
                 returnElement = element;
@@ -80,7 +80,7 @@ api.get('/book/eventBook/:id', async (req, res) => {
         })
         return returnElement;
     }
-    res.send(JSON.stringify(eventBook(req.params.id)))
+    res.send(JSON.stringify(trigger(req.params.id)))
 })
 
 api.delete('/books/:id', (req, res) => {
