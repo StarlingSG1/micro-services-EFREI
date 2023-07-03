@@ -62,6 +62,14 @@ api.delete('/authors/:id', (req, res) => {
     }
 });
 
+api.delete('/author/delete/:id', async (req, res) => {
+    await fetch(`http://book_service:4400/book/eventBook/${id}`);
+    authors = authors.filter((entry) => {
+        return entry.id != id;
+    })
+    return authors;
+})
+
 api.listen(4001, () => {
     console.log('Authors service started on port 4001');
 });

@@ -68,6 +68,21 @@ api.post('/books', (req, res) => {
     res.json(book);
 });
 
+api.get('/book/eventBook/:id', async (req, res) => {
+    const eventBook = () => {
+
+        let returnElement = null;
+        bookList.forEach((element) => {
+            if (element.author_id == id) {
+                element.author_id = null;
+                returnElement = element;
+            }
+        })
+        return returnElement;
+    }
+    res.send(JSON.stringify(eventBook(req.params.id)))
+})
+
 api.delete('/books/:id', (req, res) => {
     const bookId = parseInt(req.params.id);
     const bookIndex = books.findIndex((book) => book.id === bookId);
@@ -79,8 +94,6 @@ api.delete('/books/:id', (req, res) => {
         res.status(404).json({ message: `Book ${bookId} not found` });
     }
 });
-
-
 
 api.listen(3001, () => {
     console.log('Books service started on port 3001');
